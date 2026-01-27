@@ -1,0 +1,286 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #555e69;
+    background-color: #ffffff;
+}
+
+html {
+    font-size: 14px;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+:after, :before {
+    box-sizing: border-box;
+}
+
+/* ================= CONTAINER ================= */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* ================= HEADER ================= */
+#header {
+    background: linear-gradient(135deg, #28a745, #1e7e34);
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    animation: slideDown 0.8s ease;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+#logo {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* ================= NAVIGATION ================= */
+#nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+#nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+}
+
+#nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: white;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+#nav a:hover::after {
+    width: 100%;
+}
+
+/* ================= HERO SECTION ================= */
+.hero {
+    position: relative;
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    margin-top: 70px; /* space for fixed header */
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url("Picture/hero1.jpg") center/cover no-repeat;
+}
+
+.hero h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    animation: fadeUp 1s ease;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    animation: fadeUp 1.3s ease;
+}
+
+.hero .btn {
+    font-size: 18px;
+    padding: 12px 25px;
+    border-radius: 50px;
+    background: linear-gradient(45deg, #28a745, #20c997);
+    transition: 0.3s;
+    background-size: 200% 200%;
+    color: white;
+    text-decoration: none;
+}
+
+.hero .btn:hover {
+    transform: scale(1.1);
+    background-position: right center;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= SECTIONS ================= */
+section {
+    padding: 60px 0;
+    background-color: #fff;
+}
+
+/* ================= PLACES & SERVICES GRID ================= */
+.place-grid, .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+/* ================= CARDS ================= */
+.place-card, .service-card {
+    background: #fff;
+    padding: 25px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: 0.4s;
+}
+
+.place-card:hover, .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.place-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.place-card img:hover {
+    transform: scale(1.08) rotate(1deg);
+    filter: brightness(1.1);
+}
+
+/* ================= SUBHEADINGS COLOR CHANGE ================= */
+.place-card h3,
+.service-card h3 {
+    background: linear-gradient(90deg, #28a745, #20c997, #17a2b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* ================= CARD TEXT ================= */
+.place-card p, .service-card p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* ================= BUTTONS ================= */
+.btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #28a745, #20c997);
+    color: white;
+    padding: 12px 20px;
+    margin-top: 12px;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+    background-size: 200% 200%;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    background-position: right center;
+}
+
+/* ================= LIGHTBOX ================= */
+#lightbox {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10000;
+    padding: 40px 20px;
+    text-align: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#lightbox p {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
+#lightbox .gallery {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 15px;
+    animation: scrollGallery 20s linear infinite;
+}
+
+#lightbox .gallery img {
+    width: 250px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    flex-shrink: 0;
+    cursor: pointer;
+    transform: scale(0.8);
+    opacity: 0;
+    animation: zoomIn 0.8s forwards;
+    transition: 0.3s;
+}
+
+@keyframes scrollGallery {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes zoomIn {
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* ================= FOOTER ================= */
+#footer {
+    background: #155724;
+    color: white;
+    text-align: center;
+    padding: 25px 20px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .hero h2 { font-size: 28px; }
+    .hero p { font-size: 16px; }
+    .place-grid, .service-grid { grid-template-columns: 1fr; }
+    #nav ul { flex-direction: column; text-align: center; gap: 10px; }
+    #lightbox .gallery img { width: 45%; height: auto; }
+}
